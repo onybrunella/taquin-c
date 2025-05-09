@@ -18,7 +18,6 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
 # Compilateur
 CC = gcc
-
 CFLAGS = -Wall -ansi -I$(INCLUDE_DIR) `pkg-config --cflags MLV`
 LDFLAGS =  `pkg-config --libs MLV`
 
@@ -39,12 +38,4 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 
 # Nettoyage
 clean:
-	rm -rf $(BUILD_DIR)
-	rm -f $(TARGET)
-
-# Suppression des fichiers temporaires
-mrproper: clean
-	rm -f *~
-	rm -f \#*\#
-
-.PHONY: all clean mrproper
+	rm -rf $(BUILD_DIR) $(TARGET)
