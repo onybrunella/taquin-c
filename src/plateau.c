@@ -88,7 +88,7 @@ Carre DeplacerCaseVide(Plateau *p){
 /* fonction pour mélanger le plateau */
 void MelangerPlateau(Plateau *p, MLV_Image *img){
   int i;
-  for(i=0;i<2;i++){
+  for(i=0;i<120;i++){
     DeplacerCaseVide(p);
    /* MLV_actualise_window();*/
    AfficherPlateau(p, img);

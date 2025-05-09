@@ -1,6 +1,6 @@
 # modification du Makefile pour le tp7 en s'inspirant du Makfile de ce lien : http://www-igm.univ-mlv.fr/~boussica/mlv/api/French/html/outils_compilation.html
 
-# Nom de l'exécutable
+# nom de l'exécutable
 TARGET = taquin
 
 # Répertoires
@@ -8,7 +8,7 @@ SRC_DIR = src
 INCLUDE_DIR = include
 BUILD_DIR = build
 
-# Liste des fichiers sources
+# liste des fichiers sources
 SRC = $(SRC_DIR)/main.c \
       $(SRC_DIR)/plateau.c \
       $(SRC_DIR)/graphique.c 
@@ -19,16 +19,13 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 # Compilateur
 CC = gcc
 
-# Flags de compilation
 CFLAGS = -Wall -ansi -I$(INCLUDE_DIR) `pkg-config --cflags MLV`
-
-# Flags de link
 LDFLAGS =  `pkg-config --libs MLV`
 
 # Règle par défaut
 all: $(TARGET)
 
-# Création du répertoire de build s'il n'existe pas
+# Création du répertoire de build dans le cas où il n'existe pas
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
