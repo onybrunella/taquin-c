@@ -1,6 +1,9 @@
 # Jeu du Taquin
 
-### Ony Brunella ANDRIATSAHAVOJAON
+### Ony Brunella ANDRIATSAHAVOJAONA
+
+-> Note : L'image de test que j'ai utilisée est stockée dans le dossier data
+
 
 ## Présentation du jeu
 

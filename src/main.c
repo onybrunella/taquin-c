@@ -1,3 +1,8 @@
+/**
+ * @file main.c
+ * @author Ony Brunella ANDRIATSAHAVOJAONA
+ */
+
 #include <stdio.h>
 #include <time.h>
 #include "taquin.h"
