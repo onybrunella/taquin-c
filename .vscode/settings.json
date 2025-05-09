@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "plateau.h": "c",
+        "taquin.h": "c"
+    }
+}
