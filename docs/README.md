@@ -4,9 +4,8 @@
 
 ## Présentation du jeu
 
-Le jeu du taquin est un puzzle classique composé de 15 pièces disposées sur une grille de 4×4, avec une case vide permettant de faire glisser les pièces adjacentes. L'objectif est de reconstituer l'image complète en remettant toutes les pièces dans leur position initiale.
+Le jeu du taquin est un puzzle classique composé de 15 pièces disposées sur une grille de 4×4 (dans ce cas-là), avec une case vide permettant de faire glisser les pièces adjacentes. L'objectif est de reconstituer l'image complète en remettant toutes les pièces dans leur position initiale.
 
-Dans cette implémentation :
 - Une image de 512×512 pixels est découpée en 16 cases (4×4)
 - La 16ème case est laissée vide pour permettre les mouvements
 - Le jeu est mélangé de manière à toujours rester résoluble
@@ -16,7 +15,7 @@ Dans cette implémentation :
 
 ### Modélisation et initialisation
 
-J'ai commencé par définir les structures de données nécessaires, notamment la structure `Plateau` représentant le jeu et la structure `Carre` pour chaque pièce du puzzle. L'initialisation du plateau place les pièces dans leur position ordonnée avant tout mélange.
+J'ai commencé par définir les structures de données nécessaires, notamment la structure `Plateau` représentant le jeu et la structure `Carre` pour chaque pièce du puzzle. L'initialisation du plateau place les pièces dans leur position ordonnée avant le mélange mélange.
 
 ### Affichage graphique avec MLV
 
@@ -26,7 +25,7 @@ L'interface graphique utilise la bibliothèque MLV pour :
 - Découper l'image en 16 morceaux de 128×128 pixels chacun
 - Afficher ces morceaux pour représenter l'état actuel du plateau
 
-Une difficulté majeure a été le découpage correct de l'image de 512×512 pixels en blocs individuels. Chaque bloc fait exactement 128 pixels de côté (défini par `TAILLE_CASE` dans `plateau.h`).
+La première difficulté a été le découpage de l'image de 512×512 pixels en blocs individuels. Chaque bloc fait exactement 128 pixels de côté (défini par `TAILLE_CASE` dans `plateau.h`).
 
 ### Correction d'un bug d'affichage
 
@@ -34,7 +33,7 @@ J'ai rencontré un problème d'affichage qui déformait l'image :
 
 ![Image déformée](image.png)
 
-Après analyse, j'ai identifié que j'avais inversé les variables `i` et `j` dans la fonction `InitialisationPlateau`. Cette inversion affectait le calcul des coordonnées de chaque fragment d'image.
+Après analyse, j'avai identifié que j'avais inversé les variables `i` et `j` dans la fonction `InitialisationPlateau` (oops).
 
 ### Logique d'affichage
 
@@ -48,10 +47,10 @@ Pour afficher correctement le plateau :
 
 ### Algorithme de mélange
 
-Un aspect crucial du jeu est la génération d'un mélange résoluble. Pour cela, j'ai implémenté un mélange par déplacements aléatoires valides :
-- Je pars de la configuration finale (ordonnée)
+Un point important du jeu est la génération d'un mélange résoluble. Pour cela, il fallait implémenté un mélange par déplacements aléatoires valides :
+- Je pars de configuration finale (ordonnée)
 - J'effectue 120 mouvements aléatoires de la case vide avec ses voisins directs
-- J'utilise `srand(time(NULL))` pour assurer la variabilité des mélanges à chaque partie
+- `srand(time(NULL))` pour que chaque mélange soit différent à chaque partie
 
 Les images ci-dessous montrent le plateau avant et après le mélange :
 
@@ -93,4 +92,3 @@ Un mouvement est valide si la pièce cliquée est :
 ### Vérification de la victoire
 
 Après chaque mouvement, le jeu vérifie si toutes les pièces sont à leur place. Si c'est le cas, un message de victoire s'affiche et la partie se termine après quelques secondes.
-
