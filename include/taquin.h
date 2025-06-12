@@ -6,32 +6,25 @@
 #define NB_COL 4
 #define NB_LIG 4
 
-#define TAILLE_IMAGE 512  /* Taille de l’image (512x512 pixels) */
-#define TAILLE_CASE (TAILLE_IMAGE / NB_LIG)  /* Taille d’une case (128x128 pixels) */
+#define TAILLE_IMAGE 512
+#define TAILLE_CASE (TAILLE_IMAGE / NB_LIG)
 
-typedef struct carre{
+typedef struct carre {
   int lig;
   int col;
 } Carre;
 
-typedef struct plateau{
+typedef struct plateau {
   Carre bloc[NB_COL][NB_LIG];
 } Plateau;
 
-
-/* Initialise le plateau avec les coordonnées de chaque bloc */
-void InitialisationPlateau(Plateau *plateau);
-
-void AfficherPlateau(Plateau *P, MLV_Image *image);
-
-Carre TrouverCaseVide(Plateau *p);
-
-Carre DeplacerCaseVide(Plateau *p);
-
-void MelangerPlateau(Plateau *plateau, MLV_Image *img);
-
-void GererClicSouris(Plateau *plateau, MLV_Image *img);
-int estResolu(Plateau *p);
-void afficherVictoire();
+void initialiser_plateau(Plateau *plateau);
+void afficher_plateau(Plateau *plateau, MLV_Image *image);
+Carre trouver_case_vide(Plateau *plateau);
+Carre deplacer_case_vide(Plateau *plateau);
+void melanger_plateau(Plateau *plateau, MLV_Image *img);
+void gerer_clic_souris(Plateau *plateau, MLV_Image *img);
+int est_resolu(Plateau *plateau);
+void afficher_victoire(void);
 
 #endif
