@@ -70,7 +70,7 @@ Carre deplacer_case_vide(Plateau *p) {
 
 void melanger_plateau(Plateau *p, MLV_Image *img) {
     int i;
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i < 10; i++) {
         deplacer_case_vide(p);
         afficher_plateau(p, img);
         MLV_wait_milliseconds(20);
