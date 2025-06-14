@@ -10,21 +10,18 @@
 #define TAILLE_CASE (TAILLE_IMAGE / NB_LIG)
 
 typedef struct carre {
-  int lig;
-  int col;
+    int lig;
+    int col;
 } Carre;
 
 typedef struct plateau {
-  Carre bloc[NB_COL][NB_LIG];
+    Carre bloc[NB_COL][NB_LIG];
 } Plateau;
 
 void initialiser_plateau(Plateau *plateau);
-void afficher_plateau(Plateau *plateau, MLV_Image *image);
 Carre trouver_case_vide(Plateau *plateau);
 Carre deplacer_case_vide(Plateau *plateau);
 void melanger_plateau(Plateau *plateau, MLV_Image *img);
-void gerer_clic_souris(Plateau *plateau, MLV_Image *img);
 int est_resolu(Plateau *plateau);
-void afficher_victoire(void);
 
 #endif

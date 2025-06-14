@@ -4,11 +4,8 @@
  * @brief Fonctions d'affichage graphique du taquin à l'aide de la bibliothèque MLV
  */
 
-#include "../include/taquin.h"
+#include "../include/graphique.h"
 
-/**
- * Affiche le plateau de jeu
- */
 void afficher_plateau(Plateau *p, MLV_Image *img) {
     if (!img || !p) return;
     MLV_clear_window(MLV_COLOR_BLACK);
@@ -33,9 +30,6 @@ void afficher_plateau(Plateau *p, MLV_Image *img) {
     MLV_actualise_window();
 }
 
-/**
- * Gère les clics de souris pour déplacer les pièces
- */
 void gerer_clic_souris(Plateau *p, MLV_Image *img){
     int x, y;
     MLV_wait_mouse(&x, &y);
@@ -57,9 +51,6 @@ void gerer_clic_souris(Plateau *p, MLV_Image *img){
     afficher_plateau(p, img);
 }
 
-/**
- * Affiche un message de victoire
- */
 void afficher_victoire() {
     MLV_draw_text(200, 200, "VOUS AVEZ GAGNÉ !!!!!!!!!", MLV_COLOR_RED2);
     MLV_actualise_window();

@@ -4,11 +4,9 @@
  * @brief Fonctions de gestion du plateau du taquin (initialisation, mélange, déplacement, vérification)
  */
 
-#include "../include/taquin.h"
-#include <stdio.h>
-#include <stdlib.h>
+#include "../include/plateau.h"
+#include "../include/graphique.h"
 
-/* Initialise le plateau en plaçant chaque pièce à sa position d'origine */
 void initialiser_plateau(Plateau *p) {
     int i, j;
     for (i = 0; i < NB_LIG; i++) {
@@ -19,7 +17,6 @@ void initialiser_plateau(Plateau *p) {
     }
 }
 
-/* Trouve la position actuelle de la case vide */
 Carre trouver_case_vide(Plateau *p) {
     int i, j;
     Carre case_vide;
@@ -34,7 +31,6 @@ Carre trouver_case_vide(Plateau *p) {
     return case_vide;
 }
 
-/* Déplace la case vide dans une direction aléatoire */
 Carre deplacer_case_vide(Plateau *p) {
     Carre case_vide = trouver_case_vide(p);
     int lig = case_vide.lig;
@@ -72,7 +68,6 @@ Carre deplacer_case_vide(Plateau *p) {
     return case_vide;
 }
 
-/* Mélange le plateau en déplaçant la case vide de façon aléatoire plusieurs fois */
 void melanger_plateau(Plateau *p, MLV_Image *img) {
     int i;
     for (i = 0; i < 3; i++) {
@@ -82,7 +77,6 @@ void melanger_plateau(Plateau *p, MLV_Image *img) {
     }
 }
 
-/* Vérifie si le plateau est dans un état résolu */
 int est_resolu(Plateau *p) {
     int i, j;
     for (i = 0; i < NB_LIG; i++) {

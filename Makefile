@@ -1,41 +1,39 @@
-# modification du Makefile pour le tp7 en s'inspirant du Makfile de ce lien : http://www-igm.univ-mlv.fr/~boussica/mlv/api/French/html/outils_compilation.html
-
-# nom de l'exécutable
+# Name of the executable
 TARGET = taquin
 
-# Répertoires
+# Directories
 SRC_DIR = src
 INCLUDE_DIR = include
 BUILD_DIR = build
 
-# liste des fichiers sources
+# List of source files
 SRC = $(SRC_DIR)/main.c \
       $(SRC_DIR)/plateau.c \
-      $(SRC_DIR)/graphique.c 
-	  
-# Liste des fichiers objets (dérivée des sources)
+      $(SRC_DIR)/graphique.c
+
+# List of object files (derived from sources)
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
-# Compilateur
+# Compiler
 CC = gcc
 CFLAGS = -Wall -ansi -I$(INCLUDE_DIR) `pkg-config --cflags MLV`
-LDFLAGS =  `pkg-config --libs MLV`
+LDFLAGS = `pkg-config --libs MLV`
 
-# Règle par défaut
+# Default rule
 all: $(TARGET)
 
-# Création du répertoire de build dans le cas où il n'existe pas
+# Create the build directory if it doesn't exist
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
-# Règle de création de l'exécutable
+# Rule to create the executable
 $(TARGET): $(BUILD_DIR) $(OBJ)
 	$(CC) -o $(TARGET) $(OBJ) $(LDFLAGS)
 
-# Règle de compilation des fichiers sources en objets
+# Rule to compile source files into object files
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-# Nettoyage
+# Clean up build files and executable
 clean:
 	rm -rf $(BUILD_DIR) $(TARGET)

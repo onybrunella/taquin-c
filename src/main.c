@@ -3,23 +3,25 @@
  * @author Ony Brunella ANDRIATSAHAVOJAONA
  */
 
-#include <stdio.h>
 #include <time.h>
-#include "../include/taquin.h"
+#include "../include/graphique.h"
+#include "../include/plateau.h"
+
+#define DEFAULT_IMAGE_PATH "data/earth.png"
 
 int main(int argc, char *argv[]) {
 
     MLV_Image *image;
     Plateau plateau;
+    const char *image_path = DEFAULT_IMAGE_PATH;
 
     MLV_create_window("Jeu de Taquin", "Taquin", TAILLE_IMAGE, TAILLE_IMAGE);
 
-    if (argc < 2) {
-        fprintf(stderr, "Usage : %s <image>\n", argv[0]);
-        MLV_free_window();
-        return 1;
+    if (argc >= 2) {
+        image_path = argv[1];
     }
-    image = MLV_load_image(argv[1]);
+
+    image = MLV_load_image(image_path);
     if (!image) {
         fprintf(stderr, "Erreur : Impossible de charger l'image !!!!!!\n");
         return 1;
@@ -33,11 +35,8 @@ int main(int argc, char *argv[]) {
     }
 
     MLV_resize_image(image, TAILLE_IMAGE, TAILLE_IMAGE);
-
     srand(time(NULL));
-
     initialiser_plateau(&plateau);
-
     melanger_plateau(&plateau, image);
 
     while (!est_resolu(&plateau)) {
@@ -45,7 +44,6 @@ int main(int argc, char *argv[]) {
     }
 
     afficher_victoire();
-
     MLV_free_image(image);
     MLV_free_window();
 
