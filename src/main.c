@@ -64,7 +64,7 @@ int main(int argc, char *argv[]) {
     Plateau plateau;
     const char *image_path = DEFAULT_IMAGE_PATH;
 
-    MLV_create_window("Jeu de Taquin", "Taquin", TAILLE_IMAGE, TAILLE_IMAGE);
+    MLV_create_window("Jeu de Taquin", "Taquin", WINDOW_WIDTH, WINDOW_HEIGHT);
 
     if (argc >= 2) {
         image_path = argv[1];

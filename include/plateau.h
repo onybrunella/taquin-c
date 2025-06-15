@@ -9,6 +9,10 @@
 #define TAILLE_IMAGE 512
 #define TAILLE_CASE (TAILLE_IMAGE / NB_LIG)
 
+#define WINDOW_WIDTH (TAILLE_IMAGE * 2 + 20)
+#define WINDOW_HEIGHT TAILLE_IMAGE
+#define IMAGE_GAP 20
+
 typedef struct carre {
     int lig;
     int col;

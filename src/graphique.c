@@ -9,6 +9,22 @@
 void afficher_plateau(Plateau *p, MLV_Image *img) {
     if (!img || !p) return;
     MLV_clear_window(MLV_COLOR_BLACK);
+    /*afficher l'img originale à droite*/
+
+    MLV_Image* img_reduite = MLV_copy_image(img);
+    int taille_img_reduite = TAILLE_IMAGE / 2;
+    MLV_resize_image(img_reduite, taille_img_reduite, taille_img_reduite);
+
+    int zone_x = TAILLE_IMAGE + IMAGE_GAP;
+    int zone_y = 0;
+    int zone_largeur = TAILLE_IMAGE;
+    int zone_hauteur = TAILLE_IMAGE;
+
+    int x_img = zone_x + (zone_largeur - taille_img_reduite) / 2;
+    int y_img = zone_y + (zone_hauteur - taille_img_reduite) / 2;
+
+    MLV_draw_image(img_reduite, x_img, y_img);
+
     int i, j;
     for (i = 0; i < NB_LIG; i++) {
         for (j = 0; j < NB_COL; j++) {
