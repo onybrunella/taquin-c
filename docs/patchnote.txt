@@ -1,0 +1,20 @@
+# Changements effectués sur le projet Taquin
+
+## Améliorations fonctionnelles
+- Ajout d'un chronomètre pour mesurer le temps de jeu
+- Affichage de l'image originale à droite comme modèle de référence
+- Possibilité d'importer et d'utiliser sa image personnalisée (avec redimensionnement automatique en taille 512x512)
+- Meilleure message de fin de partie
+
+## Structure du code
+- Séparation en deux modules distincts :
+  * `graphique.c/.h` pour la gestion de l'interface
+  * `plateau.c/.h` pour la logique du jeu
+- Création de fichiers d'en-tête (.h) pour chaque fichier source (.c) au lieu d'un seul taquin.h
+- Organisation des imports dans les fichiers d'en-tête appropriés
+- Suppression des imports non utilisés
+
+## Nettoyage du code
+- Suppression des commentaires de code inutiles
+- Suppresion du "dead code" (code mort)
+- Conversion des noms de fonctions en snake_case
